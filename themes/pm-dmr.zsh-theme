@@ -9,7 +9,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 PRE_PROMPT='%{$fg[cyan]%}%#%{$reset_color%} '
 # post prompt is basically $RPS1$PRE_PROMPT
-POST_PROMPT='%{$fg[white]%}%~$(git_prompt_info)%{$fg[cyan]%}%#%{$reset_color%} '
+POST_PROMPT='%{$fg[white]%}%40<...<%~$(git_prompt_info)%{$fg[cyan]%}%#%{$reset_color%} '
 RPS1='%{$fg[white]%}%~$(git_prompt_info)%{$reset_color%}'
 PROMPT="$PRE_PROMPT"
 
