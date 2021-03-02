@@ -4,6 +4,10 @@
 #
 # https://superuser.com/questions/1027957
 
+
+# ZSH_THEME_TERM_TAB_TITLE_IDLE="%40<..<%~%<<"
+ZSH_THEME_TERM_TAB_TITLE_IDLE='%40<..<$(felix_pwd_abbr)%<<'
+
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}|%{$reset_color%}%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
