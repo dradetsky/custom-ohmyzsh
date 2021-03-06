@@ -4,20 +4,28 @@
 #
 # https://superuser.com/questions/1027957
 
+if typeset -f dmr_pwd_abbr > /dev/null ; then
+    function prompt_path_info() {
+        dmr_pwd_abbr
+    }
+elif typeset -f felix_pwd_abbr > /dev/null ; then
+    function prompt_path_info() {
+        felix_pwd_abbr
+    }
+else
+    function prompt_path_info() {
+        '%40<...<%~'
+    }
+fi
 
-# ZSH_THEME_TERM_TAB_TITLE_IDLE="%40<..<%~%<<"
-ZSH_THEME_TERM_TAB_TITLE_IDLE='%40<..<$(felix_pwd_abbr)%<<'
+ZSH_THEME_TERM_TAB_TITLE_IDLE='%40<..<$(prompt_path_info)%<<'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}|%{$reset_color%}%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 
 PRE_PROMPT='%{$fg[cyan]%}%#%{$reset_color%} '
 # post prompt is basically $RPS1$PRE_PROMPT
-if typeset -f felix_pwd_abbr > /dev/null ; then
-    POST_PROMPT='%{$fg[white]%}$(felix_pwd_abbr)$(git_prompt_info)%{$fg[cyan]%}%#%{$reset_color%} '
-else
-    POST_PROMPT='%{$fg[white]%}%40<...<%~$(git_prompt_info)%{$fg[cyan]%}%#%{$reset_color%} '
-fi
+POST_PROMPT='%{$fg[white]%}$(prompt_path_info)$(git_prompt_info)%{$fg[cyan]%}%#%{$reset_color%} '
 RPS1='%{$fg[white]%}%~$(git_prompt_info)%{$reset_color%}'
 PROMPT="$PRE_PROMPT"
 
