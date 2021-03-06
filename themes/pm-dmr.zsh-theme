@@ -23,10 +23,22 @@ PROMPT="$PRE_PROMPT"
 
 setopt transient_rprompt
 
+autoload -U add-zsh-hook
+
+_DMR_LAST_CMD_PWD="${HOME}"
+
+function save-pwd-after-command() {
+    _DMR_LAST_CMD_PWD="$PWD"
+}
+
+add-zsh-hook preexec save-pwd-after-command
+
 function move-prompt-info-accept-line() {
-    PROMPT="$POST_PROMPT"
-    zle reset-prompt
-    PROMPT="$PRE_PROMPT"
+    if [[ "$PWD" != "$_DMR_LAST_CMD_PWD" ]] ; then
+        PROMPT="$POST_PROMPT"
+        zle reset-prompt
+        PROMPT="$PRE_PROMPT"
+    fi
     zle accept-line
 }
 
