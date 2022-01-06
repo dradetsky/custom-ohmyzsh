@@ -11,6 +11,8 @@ stty quit undef
 
 source ~/.aliases
 
+# history customization
+
 # BEGIN(lzs): this is my legacy zsh subconfs. May want to replace this shit
 # eventually
 subconfdir=~/.shell
